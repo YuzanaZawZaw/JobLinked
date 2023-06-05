@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="EmployeeSkill"
+		table="employee_skill"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<composite-id name="Id" class="EmployeeSkillPK">
+			<key-many-to-one
+				name="Employee"
+				class="Employee"
+				column="employee_id"
+			/>
+			<key-many-to-one
+				name="SkillType"
+				class="SkillType"
+				column="skill_type_id"
+			/>
+		</composite-id>
+
+		<property
+			name="SkillLevel"
+			column="skill_level"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

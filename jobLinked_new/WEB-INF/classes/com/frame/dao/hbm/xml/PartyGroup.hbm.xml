@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="PartyGroup"
+		table="party_group"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="party_group_id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="GroupNameLocal"
+			column="group_name_local"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+		<property
+			name="TotalEmployee"
+			column="total_employee"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+		<property
+			name="Description"
+			column="description"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+	
+
+		<set name="PartyGroupPositions" inverse="true">
+			<key column="party_group_id"/>
+			<one-to-many class="PartyGroupPosition"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

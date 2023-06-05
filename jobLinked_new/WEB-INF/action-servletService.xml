@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- <bean id="loginPath" class="com.gic.frame.presentation.action.LoginAction"> 
+		<property name="myStudentService" ref="idStudentService" /> </bean> -->
+	<!-- ===================================FOR EMPLOYEE =============================-->
+	<!-- FOR EMPLOYEE PROFILE -->
+	<bean id="idEmployeeService" class="com.frame.business.service.EmployeeService">
+		<property name="myEmployeeDao" ref="idEmployeeDao" />
+		<property name="myEmployeeExpDao" ref="idEmployeeExpDao" />
+		<property name="myEmpImageFileDao" ref="idEmpImageFileDao" />
+		<property name="myStatusDao" ref="idStatusDao" />
+		<property name="myEmployeeQualDao" ref="idEmployeeQualDao" />
+		<property name="myEmployeeSkillDao" ref="idEmployeeSkillDao" />
+	</bean>
+	<!-- FOR EMPLOYEE QUALIFICATIONS -->
+	<bean id="idEmployeeQualService" class="com.frame.business.service.EmployeeQualService">
+		<property name="myEmployeeQualDao" ref="idEmployeeQualDao" />
+		<property name="myEmployeeDao" ref="idEmployeeDao" />
+		<property name="myQualTypeDao" ref="idQualTypeDao" />
+	</bean>
+	<!-- FOR EMPLOYEE EXPERIENCES -->
+	<bean id="idEmployeeExpService" class="com.frame.business.service.EmployeeExpService">
+		<property name="myEmployeeExpDao" ref="idEmployeeExpDao" />
+		<property name="myPartyGroupPositionDao" ref="idPartyGroupPositionDao" />
+		<property name="myEmployeeDao" ref="idEmployeeDao" />
+	</bean>
+	<!-- FOR EMPLOYEE SKILLS -->
+	<bean id="idEmployeeSkillService" class="com.frame.business.service.EmployeeSkillService">
+		<property name="myEmployeeSkillDao" ref="idEmployeeSkillDao" />
+		<property name="myEmployeeDao" ref="idEmployeeDao" />
+		<property name="mySkillTypeDao" ref="idSkillTypeDao" />
+	</bean>
+	<!-- FOR EMPLOYEE PROFILE IMAGE -->
+	<bean id="idEmpImageFileService" class="com.frame.business.service.EmpImageFileService">
+		<property name="myEmpImageFileDao" ref="idEmpImageFileDao" />
+		<property name="myEmployeeDao" ref="idEmployeeDao" />
+	</bean>
+	<!-- FOR EMPLOYEE JOB POST APPLY -->
+	<bean id="idJobPostApplyServicee" class="com.frame.business.service.JobPostApplyService">
+		<property name="myJobPostApplyDao" ref="idJobPostApplyDao" />
+		<property name="myEmployeeDao" ref="idEmployeeDao" />
+		<property name="myJobPostDao" ref="idJobPostDao" />
+	</bean>
+	
+	<!-- ===================================FOR RECRUITERS =============================-->
+	<!-- FOR RECRUITER PROFILE -->
+	<bean id="idRecruitersService" class="com.frame.business.service.RecruitersService">
+		<property name="myRecruitersDao" ref="idRecruitersDao" />
+		<property name="myStatusDao" ref="idStatusDao" />
+		<property name="myPartyGroupPositionDao" ref="idPartyGroupPositionDao" />
+	</bean>
+	<!-- FOR JOB POST -->
+	<bean id="idJobPostService" class="com.frame.business.service.JobPostService">
+		<property name="myJobPostDao" ref="idJobPostDao" />
+		<property name="myPartyGroupPositionDao" ref="idPartyGroupPositionDao" />
+		<property name="myStatusDao" ref="idStatusDao" />
+		<property name="myJobPostQualDao" ref="idJobPostQualDao" />
+		<property name="myJobPostApplyDao" ref="idJobPostApplyDao" />
+		<property name="myJobPostReqDao" ref="idJobPostRequirementDao" />
+		<property name="myQualTypeDao" ref="idQualTypeDao" />
+		<property name="myPartyGroupDao" ref="idPartyGroupDao" />
+		<property name="myEmpImageFileDao" ref="idEmpImageFileDao" />
+	</bean>
+	<bean id="idJobPostRequirementService" class="com.frame.business.service.JobPostRequirementService">
+		<property name="myJobPostReqDao" ref="idJobPostRequirementDao" />
+		<property name="myJobPostDao" ref="idJobPostDao" />
+	</bean>
+	<bean id="idJobPostQualService" class="com.frame.business.service.JobPostQualService">
+		<property name="myJobPostDao" ref="idJobPostDao" />
+		<property name="myQualTypeDao" ref="idQualTypeDao" />
+		<property name="myJobPostQualDao" ref="idJobPostQualDao" />
+	</bean>
+	<!-- FOR MAIL -->
+	<bean id="idMailService" class="com.frame.business.service.MailService">
+	</bean>
+	<!-- ===================================FOR ADMIN =============================-->
+	<!-- FOR ADMIN PROFILE -->
+	<bean id="idAdminService" class="com.frame.business.service.AdminService">
+		<property name="myAdminDao" ref="idAdminDao" />
+	</bean>
+	<!-- FOR SKILL TYPE -->
+	<bean id="idSkillTypeService" class="com.frame.business.service.SkillTypeService">
+		<property name="mySkillTypeDao" ref="idSkillTypeDao" />
+		<property name="myEmployeeSkillDao" ref="idEmployeeSkillDao" />
+	</bean>
+	<!-- FOR POSITION TYPE -->
+	<bean id="idPositionTypeService" class="com.frame.business.service.PositionTypeService">
+		<property name="myPositionTypeDao" ref="idPositionTypeDao" />
+		<property name="myPartyGroupPositionDao" ref="idPartyGroupPositionDao" />
+	</bean>
+	<!-- FOR COMPANY -->
+	<bean id="idPartyGroupService" class="com.frame.business.service.PartyGroupService">
+		<property name="myPartyGroupDao" ref="idPartyGroupDao" />
+		<property name="myPartyGroupPositionDao" ref="idPartyGroupPositionDao" />
+	</bean>
+	<!-- FOR POSITION -->
+	<bean id="idPartyGroupPositionService" class="com.frame.business.service.PartyGroupPositionService">
+		<property name="myPartyGroupPositionDao" ref="idPartyGroupPositionDao" />
+		<property name="myPartyGroupDao" ref="idPartyGroupDao" />
+		<property name="myPositionTypeDao" ref="idPositionTypeDao" />
+		<property name="myJobPostDao" ref="idJobPostDao" />
+		<property name="myEmployeeExpDao" ref="idEmployeeExpDao" />
+		<property name="myRecruitersDao" ref="idRecruitersDao" />
+	</bean>
+	<!-- FOR QUALIFICATION TYPE -->
+	<bean id="idQualTypeService" class="com.frame.business.service.QualTypeService">
+		<property name="myQualTypeDao" ref="idQualTypeDao" />
+		<property name="myEmployeeQualDao" ref="idEmployeeQualDao" />
+		<property name="myJobPostQualDao" ref="idJobPostQualDao" />
+	</bean>
+</beans>

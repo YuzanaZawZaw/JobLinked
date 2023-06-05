@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="QualType"
+		table="qual_type"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="qual_type_id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="Description"
+			column="description"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+	
+
+		<set name="JobPostQuals" inverse="true">
+			<key column="qual_type_id"/>
+			<one-to-many class="JobPostQual"/>
+		</set>
+	
+		<set
+			name="Employees"
+			table="employee_qual"
+			cascade="all"
+		>
+			<key column="qual_type_id"/>
+			<many-to-many column="employee_id" class="Employee"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

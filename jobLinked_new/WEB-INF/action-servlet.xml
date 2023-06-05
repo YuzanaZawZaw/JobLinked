@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!--<bean id="idXxxDao" class="com.gic.frame.dao.XxxDaoImpl"> <property 
+		name="sessionFactory" ref="sessionFactory" /> </bean> -->
+	<bean id="idEmployeeDao" class="com.frame.dao.EmployeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idRecruitersDao" class="com.frame.dao.RecruitersDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idAdminDao" class="com.frame.dao.AdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idEmployeeQualDao" class="com.frame.dao.EmployeeQualDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idEmployeeExpDao" class="com.frame.dao.EmployeeExpDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idEmployeeSkillDao" class="com.frame.dao.EmployeeSkillDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idEmpImageFileDao" class="com.frame.dao.EmpImageFileDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idSkillTypeDao" class="com.frame.dao.SkillTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idPositionTypeDao" class="com.frame.dao.PositionTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idPartyGroupDao" class="com.frame.dao.PartyGroupDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idPartyGroupPositionDao" class="com.frame.dao.PartyGroupPositionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idQualTypeDao" class="com.frame.dao.QualTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idJobPostDao" class="com.frame.dao.JobPostDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idStatusDao" class="com.frame.dao.StatusDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idJobPostRequirementDao" class="com.frame.dao.JobPostRequirementDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idJobPostQualDao" class="com.frame.dao.JobPostQualDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="idJobPostApplyDao" class="com.frame.dao.JobPostApplyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- DataSource definition -->
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+	<bean id="dbConf" class="org.springframework.core.io.ClassPathResource">
+		<constructor-arg>
+			<value>database.properties</value>
+		</constructor-arg>
+	</bean>
+	<bean id="databaseConfPostProcessor"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<ref bean="dbConf" />
+		</property>
+	</bean>
+	<!-- //Transaction Manager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- sessionFactory definition -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="mappingResources">
+			<list>
+				<value> com/frame/dao/hbm/xml/Admin.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/Employee.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/EmployeePositionFulfillment.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/EmployeeQual.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/EmployeeSkill.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/JobPost.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/JobPostApply.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/JobPostQual.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/JobPostRequirement.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/PartyGroup.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/PartyGroupPosition.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/PartyGroupPositionType.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/QualType.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/Recruiters.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/SkillType.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/Status.hbm.xml </value>
+				<value> com/frame/dao/hbm/xml/EmpImageFile.hbm.xml </value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

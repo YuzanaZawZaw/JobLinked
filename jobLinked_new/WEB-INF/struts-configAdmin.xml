@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- Form Bean Definitions -->
+	<form-beans>
+		<!-- FOR LOGIN -->
+		<form-bean name="AdminLoginFormBean" type="com.frame.presentation.form.AdminForm">
+		</form-bean>
+		
+		<!-- FOR Skill Type -->
+		<form-bean name="SkillTypeFormBean" type="com.frame.presentation.form.SkillTypeForm">
+		</form-bean>
+		
+		<!-- FOR Position Type -->
+		<form-bean name="PositionTypeFormBean" type="com.frame.presentation.form.PositionTypeForm">
+		</form-bean>
+		
+		<!-- FOR Party Group -->
+		<form-bean name="PartyGroupFormBean" type="com.frame.presentation.form.PartyGroupForm">
+		</form-bean>
+		
+		<!-- FOR Party Group Position -->
+		<form-bean name="PartyGroupPositionFormBean" type="com.frame.presentation.form.PartyGroupPositionForm">
+		</form-bean>
+		
+		<!-- FOR Party Group Position -->
+		<form-bean name="PartyGroupPositionFormBean" type="com.frame.presentation.form.PartyGroupPositionForm">
+		</form-bean>
+		
+		<!-- FOR Qualification Type -->
+		<form-bean name="QualTypeFormBean" type="com.frame.presentation.form.QualTypeForm">
+		</form-bean>
+		
+		<!-- FOR Employee List -->
+		<form-bean name="EmployeeListBean" type="com.frame.presentation.form.EmployeeForm">
+		</form-bean>
+		
+		<!-- FOR Recruiter List -->
+		<form-bean name="RecruiterListBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		
+	</form-beans>
+	<!-- ===================================Action Mapping Definitions============================ -->
+	<action-mappings>
+		<!-- Default "Welcome" action -->
+		<!-- Forwards to Welcome.jsp -->
+		<action path="/WelcomeAdmin" type="org.apache.struts.actions.ForwardAction"
+			parameter="/admin_home_page_bstr.jsp" />
+			
+		<action path="/AdminHome" type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+ 				
+		<!-- FOR ADMIN LOGIN -->
+		<action path="/adminLoginPath" name="AdminLoginFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/admin_home_page_bstr.jsp">
+			<forward name="gotoAdminModule" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="//admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		
+		<!-- FOR ADMIN CHANGE PASSWORD -->
+		<action path="/adminChangePasswordPath" name="AdminLoginFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/change_password_details.jsp">
+			<forward name="gotoAdminChangePass" path="/WEB-INF/jsp/admin/change_password_details.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<!-- FOR SKILL TYPES -->
+		<action path="/createSkillType" name="SkillTypeFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_skill_type.jsp">
+			<forward name="gotoSkillType" path="/WEB-INF/jsp/admin/view_skill_type.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deleteSkillType" name="SkillTypeFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_skill_type.jsp">
+			<forward name="gotoSkillType" path="/WEB-INF/jsp/admin/view_skill_type.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<!-- FOR POSITION TYPES -->
+		<action path="/createPositionType" name="PositionTypeFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_party_position_type.jsp">
+			<forward name="gotoPositionType" path="/WEB-INF/jsp/admin/view_party_position_type.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deletePositionType" name="PositionTypeFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_party_position_type.jsp">
+			<forward name="gotoPositionType" path="/WEB-INF/jsp/admin/view_party_position_type.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<!-- FOR PARTY GROUP TYPES -->
+		<action path="/createPartyGroup" name="PartyGroupFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_party_group.jsp">
+			<forward name="gotoPartyGroup" path="/WEB-INF/jsp/admin/view_party_group.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deletePartyGroup" name="PartyGroupFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_party_group.jsp">
+			<forward name="gotoPartyGroup" path="/WEB-INF/jsp/admin/view_party_group.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		
+		<!-- FOR PARTY GROUP TYPES -->
+		<action path="/createPartyGroupPosition" name="PartyGroupPositionFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_party_group_position.jsp">
+			<forward name="gotoPartyGroupPosition" path="/WEB-INF/jsp/admin/view_party_group_position.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deletePartyGroupPosition" name="PartyGroupPositionFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_party_group_position.jsp">
+			<forward name="gotoPartyGroupPosition" path="/WEB-INF/jsp/admin/view_party_group_position.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		
+		<!-- FOR QUALIFICATION TYPES -->
+		<action path="/createQualType" name="QualTypeFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_qual_type.jsp">
+			<forward name="gotoQualType" path="/WEB-INF/jsp/admin/view_qual_type.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deleteQualType" name="QualTypeFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_qual_type.jsp">
+			<forward name="gotoQualType" path="/WEB-INF/jsp/admin/view_qual_type.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<!-- ====================================FOR EMPLOYEE LIST ======================= -->
+		<action path="/viewEmployeeList" name="EmployeeListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_emp_list.jsp">
+			<forward name="gotoEmpList" path="/WEB-INF/jsp/admin/view_emp_list.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deactivateEmpAccount" name="EmployeeListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_emp_list.jsp">
+			<forward name="gotoEmpList" path="/WEB-INF/jsp/admin/view_emp_list.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/activateEmpAccount" name="EmployeeListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_emp_list.jsp">
+			<forward name="gotoEmpList" path="/WEB-INF/jsp/admin/view_emp_list.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<!--=============================== FOR RECRUITER LIST =======================-->
+		<action path="/viewRecruiterList" name="RecruiterListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_recruiter_list.jsp">
+			<forward name="gotoRecList" path="/WEB-INF/jsp/admin/view_recruiter_list.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/deactivateRecruiterAccount" name="RecruiterListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_recruiter_list.jsp">
+			<forward name="gotoRecList" path="/WEB-INF/jsp/admin/view_recruiter_list.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+		<action path="/activateRecruiterAccount" name="RecruiterListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/admin/view_recruiter_list.jsp">
+			<forward name="gotoRecList" path="/WEB-INF/jsp/admin/view_recruiter_list.jsp" />
+			<forward name="gotoAdminModule" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoLogin" path="/admin_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/admin/admin_module_menu_bstr.jsp" />
+		</action>
+	</action-mappings>
+	
+</struts-config>

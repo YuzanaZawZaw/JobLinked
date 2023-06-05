@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>         	
+	<!-- ===============================Form Bean Definitions================================= -->
+	<form-beans>
+		<!-- =================================FOR RECRUITER ===========================================-->
+		<!-- FOR LOGIN -->
+		<form-bean name="RecFormBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		<!-- REGISTRATION -->
+		<form-bean name="RecRegFormBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		<!-- FORGET PASSWORD -->
+		<form-bean name="RecForgetPassBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		<!-- CHANGE PASSWORD -->
+		<form-bean name="RecChangePassBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		<!-- PROFILE -->
+		<form-bean name="RecProfileFormBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		<!-- UPDATE PROFILE -->
+		<form-bean name="RecUpdateProfileFormBean" type="com.frame.presentation.form.RecruiterForm">
+		</form-bean>
+		<!-- ===================================JOB POST ==============================================-->
+		<form-bean name="RecJobPostBean" type="com.frame.presentation.form.JobPostForm">
+		</form-bean>
+		<form-bean name="RecUpdateJobPostBean" type="com.frame.presentation.form.JobPostForm">
+		</form-bean>
+		<form-bean name="MailFormBean" type="com.frame.presentation.form.MailForm">
+		</form-bean>
+		<form-bean name="CVFormBean" type="com.frame.presentation.form.EmployeeViewProfileForm">
+		</form-bean>
+		<!-- ===================================JOB POST REQUIREMENT ==================================-->
+		<form-bean name="RecJobPostRequirementBean" type="com.frame.presentation.form.JobPostRequirementForm">
+		</form-bean>
+		<!-- =================================JOB POST QUALIFICATION =================================-->
+		<form-bean name="RecJobPostQualBean" type="com.frame.presentation.form.JobPostQualForm">
+		</form-bean>
+		<form-bean name="RecViewJobPostProfileBean" type="com.frame.presentation.form.JobPostForm">
+		</form-bean>
+	</form-beans>
+	<!-- ======================================Action Mapping Definitions============================ -->
+	<action-mappings>
+		<!-- Default "Welcome" action -->
+            <!-- Forwards to Welcome.jsp -->      
+		<action
+			path="/WelcomeRecruiter"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/recruiter_home_page_bstr.jsp"/>
+			
+        <action path="/RecruiterHome" type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			
+		<action path="/JobPostHome" type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+		
+		<!-- FOR RECRUITER LOGIN -->
+		<action path="/recLoginPath" name="RecFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp">
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+			<forward name="gotoRegister" path="/WEB-INF/jsp/recruiter/user_register.jsp" />
+		</action>
+		
+		<!-- FOR REGISTRATION -->
+		<!-- <action path="/recRegisterPathFirst" name="RecRegFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false" input="/WEB-INF/jsp/recruiter/user_register.jsp">
+			<forward name="gotoLogin" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+			<forward name="gotoRegister" path="/WEB-INF/jsp/recruiter/user_register.jsp" />
+		</action> -->
+		<!-- FOR REGISTER VALIDATION -->
+		<action path="/recRegisterPath" name="RecFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/user_register.jsp">
+			<set-property value="true" property="cancellable" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+			<forward name="gotoRegister" path="/WEB-INF/jsp/recruiter/user_register.jsp" />
+		</action>
+		<!-- FOR RECRUITER PROFILE -->
+		<action path="/viewRecruiterProfile" name="RecProfileFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false" input="/WEB-INF/jsp/recruiter/view_recruiter_profile.jsp">
+			<forward name="gotoViewRecProfile" path="/WEB-INF/jsp/recruiter/view_recruiter_profile.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<!-- FOR UPDATE RECRUITER PROFILE -->
+		<action path="/updateRecruiterProfile" name="RecProfileFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false" input="/WEB-INF/jsp/recruiter/update_recruiter_profile.jsp">
+			<forward name="gotoUpdateRecProfile" path="/WEB-INF/jsp/recruiter/update_recruiter_profile.jsp" />
+			<forward name="gotoViewRecProfile" path="/WEB-INF/jsp/recruiter/view_recruiter_profile.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		
+		<!-- FOR RECRUITER FORGET PASSWORD -->
+		<action path="/recForgetPassPath" name="RecFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/recruiter_forget_password_details.jsp">
+			<forward name="gotoForgetPass" path="/recruiter_forget_password_details.jsp" />
+			<forward name="gotoRecruiterModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<!-- FOR RECRUITER CHANGE PASSWORD -->
+		<action path="/recChangePasswordPath" name="RecFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/change_password_details.jsp">
+			<forward name="gotoRecChangePass" path="/WEB-INF/jsp/recruiter/change_password_details.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<!-- ========================================FOR JOB POST ============================-->
+		<action path="/createJobPost" name="RecJobPostBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/create_job_post.jsp">
+			<forward name="gotoCreateJobPost" path="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<action path="/updateJobPost" name="RecJobPostBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/update_job_post.jsp">
+			<forward name="gotoUpdateJobPost" path="/WEB-INF/jsp/recruiter/update_job_post.jsp" />
+			<forward name="gotoCreateJobPost" path="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<action path="/deleteJobPost" name="RecJobPostBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/create_job_post.jsp">
+			<forward name="gotoCreateJobPost" path="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />			
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<action path="/viewJobPostProfile" name="RecViewJobPostProfileBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoViewJobPostProfile" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<!-- ==================================== MAIL ==============================================-->
+		<action path="/sendMailToEmp" name="MailFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoMail" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoViewJobPostProfile" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<action path="/cVDownload" name="CVFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoCV" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoViewJobPostProfile" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />			
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<!--================================= JOB POST REQUIREMENT ================================-->
+		<action path="/createJobPostRequirement" name="RecJobPostRequirementBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoJobPostRequirement" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />		
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action> 
+		<action path="/deleteJobPostRequirement" name="RecJobPostBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoCreateJobPost" path="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />			
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>   
+		<!-- ==================================JOB POST QUALIFICATION=================================== -->
+		<action path="/recCreateJobPostQual" name="RecJobPostQualBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoViewJobPostProfile" path="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp" />
+			<forward name="gotoCreateJobPost" path="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+			<forward name="gotoUpdateJobPost" path="/WEB-INF/jsp/recruiter/update_job_post.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />			
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+		<action path="/deleteJobPostQual" name="RecJobPostBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/recruiter/view_job_post_profile.jsp">
+			<forward name="gotoCreateJobPost" path="/WEB-INF/jsp/recruiter/create_job_post.jsp" />
+			<forward name="gotoUpdateJobPost" path="/WEB-INF/jsp/recruiter/update_job_post.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module_menu_bstr.jsp" />
+			<forward name="gotoLogin" path="/recruiter_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/recruiter/recruiter_home_page.jsp" />
+		</action>
+	</action-mappings>
+	
+</struts-config>

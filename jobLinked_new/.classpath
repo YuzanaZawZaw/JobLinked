@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="WEB-INF/src"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/activation.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/antlr-2.7.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-chain-1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-pool.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-validator-1.3.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jta.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/spring.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/struts-core-1.3.8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/struts-taglib-1.3.8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/struts-tiles-1.3.8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/velocity-dep-1.5.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/struts-extras-1.3.9.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/displaytag-1.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/displaytag-export-poi-1.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/displaytag-portlet-1.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-io-1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/xmpbox-3.0.0-alpha3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/itextpdf-5.1.0.jar"/>
+	<classpathentry kind="src" output="work" path="work"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

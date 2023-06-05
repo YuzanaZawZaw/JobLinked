@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="PartyGroupPosition"
+		table="party_group_position"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="party_group_position_id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="PositionName"
+			column="position_name"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<many-to-one
+			name="PartyGroup"
+			column="party_group_id"
+			class="PartyGroup"
+			not-null="true"
+		>
+		</many-to-one>
+		<many-to-one
+			name="PartyGroupPositionType"
+			column="party_group_position_type_id"
+			class="PartyGroupPositionType"
+			not-null="true"
+		>
+		</many-to-one>
+	
+
+		<set name="JobPosts" inverse="true">
+			<key column="party_group_position_id"/>
+			<one-to-many class="JobPost"/>
+		</set>
+
+		<set name="Recruiters" inverse="true">
+			<key column="party_group_position_id"/>
+			<one-to-many class="Recruiters"/>
+		</set>
+	
+		<set
+			name="Employees"
+			table="employee_position_fulfillment"
+			cascade="all"
+		>
+			<key column="party_group_position_id"/>
+			<many-to-many column="employee_id" class="Employee"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

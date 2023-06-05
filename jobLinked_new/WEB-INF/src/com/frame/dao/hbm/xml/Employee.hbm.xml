@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="Employee"
+		table="employee"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="employee_id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="FirstName"
+			column="first_name"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="LastName"
+			column="last_name"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="Email"
+			column="email"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Password"
+			column="password"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="FatherName"
+			column="father_name"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="PhoneNo"
+			column="phone_no"
+			type="string"
+			not-null="false"
+			length="15"
+		/>
+		<property
+			name="BirthDate"
+			column="birth_date"
+			type="date"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Nrc"
+			column="nrc"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Gender"
+			column="gender"
+			type="string"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Address"
+			column="address"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+		<property
+			name="UniversityName"
+			column="university_name"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="SecurityQest"
+			column="security_qest"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="ImagePath"
+			column="image_path"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+		<many-to-one
+			name="Status"
+			column="status_id"
+			class="Status"
+			not-null="true"
+		>
+		</many-to-one>
+	
+
+		<set name="EmpImageFiles" inverse="true">
+			<key column="employee_id"/>
+			<one-to-many class="EmpImageFile"/>
+		</set>
+	
+		<set
+			name="JobPosts"
+			table="job_post_apply"
+			cascade="all"
+		>
+			<key column="employee_id"/>
+			<many-to-many column="job_post_id" class="JobPost"/>
+		</set>
+		<set
+			name="PartyGroupPositions"
+			table="employee_position_fulfillment"
+			cascade="all"
+		>
+			<key column="employee_id"/>
+			<many-to-many column="party_group_position_id" class="PartyGroupPosition"/>
+		</set>
+		<set
+			name="QualTypes"
+			table="employee_qual"
+			cascade="all"
+		>
+			<key column="employee_id"/>
+			<many-to-many column="qual_type_id" class="QualType"/>
+		</set>
+		<set
+			name="SkillTypes"
+			table="employee_skill"
+			cascade="all"
+		>
+			<key column="employee_id"/>
+			<many-to-many column="skill_type_id" class="SkillType"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

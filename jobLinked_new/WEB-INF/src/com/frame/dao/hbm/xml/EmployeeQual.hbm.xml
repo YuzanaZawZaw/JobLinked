@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="EmployeeQual"
+		table="employee_qual"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<composite-id name="Id" class="EmployeeQualPK">
+			<key-many-to-one
+				name="Employee"
+				class="Employee"
+				column="employee_id"
+			/>
+			<key-many-to-one
+				name="QualType"
+				class="QualType"
+				column="qual_type_id"
+			/>
+		</composite-id>
+
+		<property
+			name="SchoolName"
+			column="school_name"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="Degree"
+			column="degree"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="FieldOfStudy"
+			column="field_of_study"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="FromDate"
+			column="from_date"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="ThruDate"
+			column="thru_date"
+			type="date"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="FieldOfActivity"
+			column="field_of_activity"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="QualGrade"
+			column="qual_grade"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

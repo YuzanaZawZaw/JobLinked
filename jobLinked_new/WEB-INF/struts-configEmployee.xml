@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- ===================================Form Bean Definitions=============================== -->
+	<form-beans>
+		<!-- <form-bean name="XxxFormBean" type="com.gic.frame.presentation.form.XxxxForm"> 
+			</form-bean> -->
+		<!-- FOR LOGIN -->
+		<form-bean name="EmpLoginFormBean" type="com.frame.presentation.form.EmployeeForm">
+		</form-bean>
+		<!-- REGISTRATION -->
+		<form-bean name="EmpRegFormBean" type="com.frame.presentation.form.EmployeeForm">
+		</form-bean>
+		<!-- FORGET PASSWORD -->
+		<form-bean name="EmpForgetPassBean" type="com.frame.presentation.form.EmployeeForm">
+		</form-bean>
+		<!-- UPDATE PASSWORD -->
+		<form-bean name="EmpChangePassBean" type="com.frame.presentation.form.EmployeeForm">
+		</form-bean>
+		<!-- QUALIFICATION -->
+		<form-bean name="EmpProfileQualBean" type="com.frame.presentation.form.EmployeeQualForm">
+		</form-bean>
+		<!-- EXPERIENCE -->
+		<form-bean name="EmpProfileExpBean" type="com.frame.presentation.form.EmployeeExpForm">
+		</form-bean>
+		<!-- SKILL -->
+		<form-bean name="EmpProfileSkillBean" type="com.frame.presentation.form.EmployeeSkillForm">
+		</form-bean>
+		<!-- UPDATE PROFILE-->
+		<form-bean name="EmpUpdateFormBean" type="com.frame.presentation.form.EmployeeForm">
+		</form-bean>
+		<!-- UPDATE PROFILE-->
+		<form-bean name="EmpImageUploadBean" type="com.frame.presentation.form.EmpImageFileForm">
+		</form-bean>
+		<!-- VIEW PROFILE-->
+		<form-bean name="EmpViewProfileBean" type="com.frame.presentation.form.EmployeeViewProfileForm">
+		</form-bean>
+		<!-- VIEW JOB POST LIST -->
+		<form-bean name="ViewJobPostListBean" type="com.frame.presentation.form.JobPostListForm">
+		</form-bean>
+		<!-- VIEW JOB POST PROFILE -->
+		<form-bean name="EmpViewJobPostProfileBean" type="com.frame.presentation.form.JobPostListForm">
+		</form-bean>
+		<!-- VIEW APPLED JOB POST LIST -->
+		<form-bean name="EmpViewAppliedJobPostListBean" type="com.frame.presentation.form.JobPostListForm">
+		</form-bean>
+		
+		
+	</form-beans>
+
+	<!-- Action Mapping Definitions -->
+	<action-mappings>
+		<!-- Default "Welcome" action -->
+		<!-- Forwards to Welcome.jsp -->
+		<action path="/WelcomeEmployee" type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			
+		<action path="/EmployeeHome" type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF//jsp/employee/employee_module_menu_bstr.jsp" />
+			
+		<!-- FOR EMPLOYEE LOGIN -->
+		<action path="/empLoginPath" name="EmpLoginFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp">
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoRegister" path="/WEB-INF/jsp/employee/user_register.jsp" />
+			<forward name="gotoEmplModule" path="/WEB-INF/jsp/employee/employee_module_menu_bstr.jsp" />
+		</action>
+
+		<!-- FOR REGISTRATION -->
+		<action path="/empRegisterPathFirst" name="EmpRegFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false" input="/WEB-INF/jsp/employee/user_register.jsp">
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoRegister" path="/WEB-INF/jsp/employee/user_register.jsp" />
+		</action>
+		<!-- FOR REGISTER VALIDATION -->
+		<action path="/empRegisterPath" name="EmpRegFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/user_register.jsp">
+			<set-property value="true" property="cancellable" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoRegister" path="/WEB-INF/jsp/employee/user_register.jsp" />
+		</action>
+		<!-- FOR FORGET PASSWORD -->
+		<action path="/empForgetPassPath" name="EmpLoginFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/employee_forget_password_details.jsp">
+			<forward name="gotoForgetPass" path="/employee_forget_password_details.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoEmployeeModule" path="/WEB-INF/jsp/employee/employee_module_menu_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<!-- FOR CHANGE PASSWORD -->
+		<action path="/employeeChangePasswordPath" name="EmpChangePassBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/employee_change_password.jsp">
+			<forward name="gotoEmplChangePass" path="/employee_change_password.jsp" />
+			<forward name="gotoForgetPass" path="/employee_forget_password_details.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+			<forward name="gotoEmplModule" path="/WEB-INF/jsp/employee/employee_module_menu_bstr.jsp" />
+		</action>
+		<!-- FOR EMPLOYEE DETAILS PROFILE -->
+		<action path="/empProfileDetailsPath" name="EmpLoginFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session">
+		</action>
+		<action path="/viewQualDisplayPathFirst" name="EmpProfileQualBean"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="gotoEmplQual" path="/view_qualification.jsp" />
+		</action>
+		<action path="/displayDetailPath" name="EmpProfileQualBean"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="gotoEmplQual" path="/view_qualification.jsp" />
+		</action>
+		<action path="/displayPath" name="EmpProfileQualBean"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="gotoEmplQual" path="/view_qualification.jsp" />
+		</action>
+		
+		<action path="/viewExpDisplayPathFirst" name="EmpProfileExpBean"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="gotoEmplExp" path="/view_experience.jsp" />
+		</action>
+		
+		<action path="/viewSkillDisplayPathFirst" name="EmpProfileSkillBean"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="gotoEmplSkill" path="/view_skill.jsp" />
+		</action>
+		<action path="/empUpdatePath" name="EmpUpdateFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/update_employee_profile.jsp">
+			<set-property value="true" property="cancellable"></set-property>
+			<forward name="gotoEmpUpdate" path="/WEB-INF/jsp/employee/update_employee_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<!-- UPDATE EMPLOYEE PROFILE -->
+		<action path="/imageUploadPath" name="EmpImageUploadBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/employee_view_profile_details.jsp">
+			<set-property value="true" property="cancellable"></set-property>
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/employeeViewProfile" name="EmpViewProfileBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_employee_profile.jsp">
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<!-- EMPLOYEE SKILL -->
+		<action path="/createEmpSkill" name="EmpProfileSkillBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_emp_skill.jsp">
+			<forward name="gotoEmpSkill" path="/WEB-INF/jsp/employee/view_emp_skill.jsp" />
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/deleteEmpSkill" name="EmpProfileSkillBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_emp_skill.jsp">
+			<forward name="gotoEmpSkill" path="/WEB-INF/jsp/employee/view_emp_skill.jsp" />
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<!-- EMPLOYEE QUALIFICATION -->
+		<action path="/createEmpQual" name="EmpProfileQualBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_emp_qual.jsp">
+			<forward name="gotoEmpQual" path="/WEB-INF/jsp/employee/view_emp_qual.jsp" />
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/deleteEmpQual" name="EmpProfileQualBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_emp_qual.jsp">
+			<forward name="gotoEmpQual" path="/WEB-INF/jsp/employee/view_emp_qual.jsp" />
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<!-- EMPLOYEE EXPERIENCES/POSITIONS -->
+		<action path="/createEmpExp" name="EmpProfileExpBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_emp_exp.jsp">
+			<forward name="gotoEmpExp" path="/WEB-INF/jsp/employee/view_emp_exp.jsp" />
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/deleteEmpExp" name="EmpProfileExpBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_emp_exp.jsp">
+			<forward name="gotoEmpExp" path="/WEB-INF/jsp/employee/view_emp_exp.jsp" />
+			<forward name="gotoEmpUpdate" path="/employee_update_profile.jsp" />
+			<forward name="gotoEmpProfile" path="/WEB-INF/jsp/employee/view_employee_profile.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<!-- VIEW JOB POST LIST AND APPLY -->
+		<action path="/viewJobPostList" name="ViewJobPostListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_job_post_list.jsp">
+			<forward name="gotoViewJobPostList" path="/WEB-INF/jsp/employee/view_job_post_list.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/applyJobPost" name="ViewJobPostListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_job_post_list.jsp">
+			<forward name="gotoViewJobPostList" path="/WEB-INF/jsp/employee/view_job_post_list.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/viewJobPostFromEmp" name="EmpViewJobPostProfileBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/employee_view_job_post_profile.jsp">
+			<forward name="gotoViewJobPostProfile" path="/WEB-INF/jsp/employee/employee_view_job_post_profile.jsp" />
+			<forward name="gotoViewJobPostList" path="/WEB-INF/jsp/employee/view_job_post_list.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+		<action path="/viewAppliedJobPostList" name="EmpViewAppliedJobPostListBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/employee/view_applied_job_post_list.jsp">
+			<forward name="gotoViewAppliedJobPostList" path="/WEB-INF/jsp/employee/view_applied_job_post_list.jsp" />
+			<forward name="gotoViewJobPostProfile" path="/WEB-INF/jsp/employee/employee_view_job_post_profile.jsp" />
+			<forward name="gotoViewJobPostList" path="/WEB-INF/jsp/employee/view_job_post_list.jsp" />
+			<forward name="gotoRecModule" path="/WEB-INF/jsp/recruiter/recruiter_module.jsp" />
+			<forward name="gotoHome" path="/WEB-INF/jsp/employee/employee_home_page.jsp" />
+			<forward name="gotoLogin" path="/WEB-INF/jsp/employee/employee_home_page_bstr.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>

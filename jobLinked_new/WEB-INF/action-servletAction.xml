@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- ====================================FOR EMPLOYEE ========================================-->
+	<!-- FOR EMPLOYEE REGISTRATION -->
+	<bean name="/empRegisterPathFirst" class="com.frame.presentation.action.EmployeeRegistrationAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<bean name="/empRegisterPath" class="com.frame.presentation.action.EmployeeRegistrationAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<!--  FOR EMPLOYEE LOGIN -->
+	<bean name="/empLoginPath" class="com.frame.presentation.action.EmployeeLoginAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+		<property name="myEmpImageFileService" ref="idEmpImageFileService" />
+	</bean>
+	<!-- FOR EMPLOYEE FORGET PASSWORD -->
+	<bean name="/empForgetPassPath" class="com.frame.presentation.action.EmployeeForgetPasswordAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<!-- FOR EMPLOYEE CHANGE PASSWORD -->
+	<bean name="/employeeChangePasswordPath" class="com.frame.presentation.action.EmployeeChangePasswordAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<!-- FOR EMPLOYEE QUALIFICATION -->
+	<bean name="/viewQualDisplayPathFirst" class="com.frame.presentation.action.EmployeeQualAction">
+		<property name="myEmployeeQualService" ref="idEmployeeQualService" />
+	</bean>
+	<bean name="/displayDetailPath" class="com.frame.presentation.action.EmployeeQualAction">
+		<property name="myEmployeeQualService" ref="idEmployeeQualService" />
+	</bean>
+	<bean name="/displayPath" class="com.frame.presentation.action.EmployeeQualAction">
+		<property name="myEmployeeQualService" ref="idEmployeeQualService" />
+	</bean>
+	<bean name="/createEmpQual" class="com.frame.presentation.action.EmployeeQualAction">
+		<property name="myEmployeeQualService" ref="idEmployeeQualService" />
+	</bean>
+	<bean name="/deleteEmpQual" class="com.frame.presentation.action.DeleteEmployeeQualAction">
+		<property name="myEmployeeQualService" ref="idEmployeeQualService" />
+	</bean>
+	<!-- FOR EMPLOYEE EXPERIENCE -->
+	<bean name="/viewExpDisplayPathFirst" class="com.frame.presentation.action.EmployeeExpAction">
+		<property name="myEmployeeExpService" ref="idEmployeeExpService" />
+	</bean>
+	<bean name="/createEmpExp" class="com.frame.presentation.action.EmployeeExpAction">
+		<property name="myEmployeeExpService" ref="idEmployeeExpService" />
+	</bean>
+	<bean name="/deleteEmpExp" class="com.frame.presentation.action.DeleteEmployeeExpAction">
+		<property name="myEmployeeExpService" ref="idEmployeeExpService" />
+	</bean>
+	<!-- FOR EMPLOYEE SKILL -->
+	<bean name="/viewSkillDisplayPathFirst" class="com.frame.presentation.action.EmployeeSkillAction">
+		<property name="myEmployeeSkillService" ref="idEmployeeSkillService" />
+	</bean>
+	<bean name="/createEmpSkill" class="com.frame.presentation.action.EmployeeSkillAction">
+		<property name="myEmployeeSkillService" ref="idEmployeeSkillService" />
+	</bean>
+	<bean name="/deleteEmpSkill" class="com.frame.presentation.action.DeleteEmployeeSkillAction">
+		<property name="myEmployeeSkillService" ref="idEmployeeSkillService" />
+	</bean>
+	<!-- FOR EMPLOYEE UPDATE -->
+	<bean name="/empUpdatePath" class="com.frame.presentation.action.EmployeeUpdateAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+		<property name="myEmpImageFileService" ref="idEmpImageFileService" />
+	</bean>
+	<!-- FOR EMPLOYEE IMAGE UPLOAD -->
+	<bean name="/imageUploadPath" class="com.frame.presentation.action.EmployeeImageAction">
+		<property name="myEmpImageFileService" ref="idEmpImageFileService" />
+	</bean>
+	<!-- FOR EMPLOYEE VIEW PROFILE -->
+	<bean name="/employeeViewProfile" class="com.frame.presentation.action.EmployeeViewProfileAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+		<property name="myEmpImageFileService" ref="idEmpImageFileService" />
+	</bean>
+	<!-- FOR EMPLOYEE JOB POST ACTIONS -->
+	<bean name="/viewJobPostList" class="com.frame.presentation.action.ViewJobPostListAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/applyJobPost" class="com.frame.presentation.action.CreateJobPostApplyAction">
+		<property name="myJobPostApplyService" ref="idJobPostApplyServicee" />
+	</bean>
+	<bean name="/viewJobPostFromEmp" class="com.frame.presentation.action.EmpViewJobPostProfileAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/viewAppliedJobPostList" class="com.frame.presentation.action.EmpViewAppliedJobPostListAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<!-- ====================================FOR RECRUITERS ========================================-->
+	<!-- FOR REGISTRATION -->
+	<bean name="/recRegisterPathFirst" class="com.frame.presentation.action.RecruiterRegistrationAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<bean name="/recRegisterPath" class="com.frame.presentation.action.RecruiterRegistrationAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<!-- FOR LOGIN -->
+	<bean name="/recLoginPath" class="com.frame.presentation.action.RecruiterLoginAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<!-- FOR FORGET PASSWORD -->
+	<bean name="/recForgetPassPath" class="com.frame.presentation.action.RecruiterForgetPasswordAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<!-- FOR CHANGE PASSWORD -->
+	<bean name="/recChangePasswordPath" class="com.frame.presentation.action.RecruiterChangePasswordAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<!-- FOR RECRUITER PROFILE -->
+	<bean name="/viewRecruiterProfile" class="com.frame.presentation.action.ViewRecruiterProfileAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<!-- FOR UPDATE RECRUITER PROFILE -->
+	<bean name="/updateRecruiterProfile" class="com.frame.presentation.action.UpdateRecruiterProfileAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<!-- FOR RECRUITER JOB POST ACTIONS-->
+	<bean name="/createJobPost" class="com.frame.presentation.action.CreateJobPostAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/updateJobPost" class="com.frame.presentation.action.UpdateJobPostAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/deleteJobPost" class="com.frame.presentation.action.DeleteUpdateStatusJobPostAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/viewJobPostProfile" class="com.frame.presentation.action.JobPostViewProfileAction">
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/createJobPostRequirement" class="com.frame.presentation.action.CreateJobPostRequirementAction">
+		<property name="myJobPostRequirementService" ref="idJobPostRequirementService" />
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean> 
+	<bean name="/deleteJobPostRequirement" class="com.frame.presentation.action.DeleteJobPostRequirementAction">
+		<property name="myJobPostRequirementService" ref="idJobPostRequirementService" />
+	</bean> 
+	<bean name="/recCreateJobPostQual" class="com.frame.presentation.action.CreateJobPostQualAction">
+		<property name="myJobPostQualService" ref="idJobPostQualService" />
+		<property name="myQualTypeService" ref="idQualTypeService" />
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>
+	<bean name="/deleteJobPostQual" class="com.frame.presentation.action.DeleteJobPostQualAction">
+		<property name="myJobPostQualService" ref="idJobPostQualService" />
+		<property name="myJobPostService" ref="idJobPostService" />
+	</bean>  
+	<!-- MAIL ACTION -->
+	<bean name="/sendMailToEmp" class="com.frame.presentation.action.MailAction">
+		<property name="myMailService" ref="idMailService" />
+	</bean>
+	<!-- EMPLOYEE CV DOWNLOAD -->
+	<bean name="/cVDownload" class="com.frame.presentation.action.EmployeeCVDownloadAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+		<property name="myEmpImageFileService" ref="idEmpImageFileService" />
+	</bean>
+	<!-- ====================================FOR ADMIN ========================================-->
+	<!-- FOR LOGIN -->
+	<bean name="/adminLoginPath" class="com.frame.presentation.action.AdminLoginAction">
+		<property name="myAdminService" ref="idAdminService" />
+	</bean>
+	<!-- FOR LOGIN -->
+	<bean name="/adminChangePasswordPath" class="com.frame.presentation.action.AdminChangePasswordAction">
+		<property name="myAdminService" ref="idAdminService" />
+	</bean>
+	<!-- FOR SKILL TYPE -->
+	<bean name="/createSkillType" class="com.frame.presentation.action.SkillTypeAction">
+		<property name="mySkillTypeService" ref="idSkillTypeService" />
+	</bean>
+	<bean name="/deleteSkillType" class="com.frame.presentation.action.DeleteSkillTypeAction">
+		<property name="mySkillTypeService" ref="idSkillTypeService" />
+	</bean>
+	<!-- FOR POSITION TYPE -->
+	<bean name="/createPositionType" class="com.frame.presentation.action.PositionTypeAction">
+		<property name="myPositionTypeService" ref="idPositionTypeService" />
+	</bean>
+	<bean name="/deletePositionType" class="com.frame.presentation.action.DeletePositionTypeAction">
+		<property name="myPositionTypeService" ref="idPositionTypeService" />
+	</bean>
+	<!-- FOR COMPANY PROFILE -->
+	<bean name="/createPartyGroup" class="com.frame.presentation.action.PartyGroupAction">
+		<property name="myPartyGroupService" ref="idPartyGroupService" />
+	</bean>
+	<bean name="/deletePartyGroup" class="com.frame.presentation.action.DeletePartyGroupAction">
+		<property name="myPartyGroupService" ref="idPartyGroupService" />
+	</bean>
+	<!-- FOR POSITION -->
+	<bean name="/createPartyGroupPosition" class="com.frame.presentation.action.PartyGroupPositionAction">
+		<property name="myPartyGroupPositionService" ref="idPartyGroupPositionService" />
+	</bean>
+	<bean name="/deletePartyGroupPosition" class="com.frame.presentation.action.DeletePartyGroupPositionAction">
+		<property name="myPartyGroupPositionService" ref="idPartyGroupPositionService" />
+	</bean>
+	<!-- FOR QUALIFICATION TYPES -->
+	<bean name="/createQualType" class="com.frame.presentation.action.QualTypeAction">
+		<property name="myQualTypeService" ref="idQualTypeService" />
+	</bean>
+	<bean name="/deleteQualType" class="com.frame.presentation.action.DeleteQualTypeAction">
+		<property name="myQualTypeService" ref="idQualTypeService" />
+	</bean>
+	<!-- ==== for employee list === -->
+	<bean name="/viewEmployeeList" class="com.frame.presentation.action.AdminViewEmployeeListAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<bean name="/deactivateEmpAccount" class="com.frame.presentation.action.AdminDeActivateEmpAccountAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<bean name="/activateEmpAccount" class="com.frame.presentation.action.AdminActivateEmpAccountAction">
+		<property name="myEmployeeService" ref="idEmployeeService" />
+	</bean>
+	<!--=== for recruiter list === -->
+	<bean name="/viewRecruiterList" class="com.frame.presentation.action.AdminViewRecruiterListAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<bean name="/deactivateRecruiterAccount" class="com.frame.presentation.action.AdminDeActivateRecAccountAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+	<bean name="/activateRecruiterAccount" class="com.frame.presentation.action.AdminActivateRecAccountAction">
+		<property name="myRecruitersService" ref="idRecruitersService" />
+	</bean>
+</beans>

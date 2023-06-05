@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="JobPost"
+		table="job_post"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="job_post_id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="Location"
+			column="location"
+			type="string"
+			not-null="true"
+			length="255"
+		/>
+		<property
+			name="EmploymentType"
+			column="employment_type"
+			type="string"
+			not-null="true"
+			length="255"
+		/>
+		<property
+			name="Salary"
+			column="salary"
+			type="string"
+			not-null="true"
+			length="255"
+		/>
+		<property
+			name="FromDate"
+			column="from_date"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="ThruDate"
+			column="thru_date"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<many-to-one
+			name="Status"
+			column="status_id"
+			class="Status"
+			not-null="true"
+		>
+		</many-to-one>
+		<many-to-one
+			name="Recruiter"
+			column="recruiter_id"
+			class="Recruiters"
+			not-null="true"
+		>
+		</many-to-one>
+		<many-to-one
+			name="PartyGroupPosition"
+			column="party_group_position_id"
+			class="PartyGroupPosition"
+			not-null="true"
+		>
+		</many-to-one>
+	
+
+		<set name="JobPostRequirements" inverse="true">
+			<key column="job_post_id"/>
+			<one-to-many class="JobPostRequirement"/>
+		</set>
+
+		<set name="JobPostQuals" inverse="true">
+			<key column="job_post_id"/>
+			<one-to-many class="JobPostQual"/>
+		</set>
+	
+		<set
+			name="Employees"
+			table="job_post_apply"
+			cascade="all"
+		>
+			<key column="job_post_id"/>
+			<many-to-many column="employee_id" class="Employee"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

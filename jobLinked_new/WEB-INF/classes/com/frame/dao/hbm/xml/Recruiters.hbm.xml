@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="Recruiters"
+		table="recruiters"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="recruiter_id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="FirstName"
+			column="first_name"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="LastName"
+			column="last_name"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="Email"
+			column="email"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Password"
+			column="password"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="PhoneNo"
+			column="phone_no"
+			type="string"
+			not-null="false"
+			length="15"
+		/>
+		<property
+			name="BirthDate"
+			column="birth_date"
+			type="date"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Nrc"
+			column="nrc"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Gender"
+			column="gender"
+			type="string"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Address"
+			column="address"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+		<property
+			name="SecurityQest"
+			column="security_qest"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<many-to-one
+			name="Status"
+			column="status_id"
+			class="Status"
+			not-null="true"
+		>
+		</many-to-one>
+		<many-to-one
+			name="PartyGroupPosition"
+			column="party_group_position_id"
+			class="PartyGroupPosition"
+			not-null="false"
+		>
+		</many-to-one>
+	
+
+		<set name="JobPosts" inverse="true">
+			<key column="recruiter_id"/>
+			<one-to-many class="JobPost"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

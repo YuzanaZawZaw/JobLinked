@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.frame.business.entity">
+	<class
+		name="JobPostApply"
+		table="job_post_apply"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<composite-id name="Id" class="JobPostApplyPK">
+			<key-many-to-one
+				name="JobPost"
+				class="JobPost"
+				column="job_post_id"
+			/>
+			<key-many-to-one
+				name="Employee"
+				class="Employee"
+				column="employee_id"
+			/>
+		</composite-id>
+
+		<property
+			name="FromDate"
+			column="from_date"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="ImagePath"
+			column="image_path"
+			type="string"
+			not-null="false"
+			length="225"
+		/>
+
+
+	</class>	
+</hibernate-mapping>
